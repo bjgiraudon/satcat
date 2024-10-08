@@ -1,14 +1,17 @@
-# Template Extension Specification
+# SATCAT Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** SATCAT
+- **Identifier:** <https://github.com/bjgiraudon/satcat/raw/refs/tags/v1.0.0/json-schema/schema.json>
+- **Field Name Prefix:** satcat
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @bjgiraudon
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the SATCAT Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
+The Satellite Catalog Number (SATCAT), also known as NORAD Catalog Number, NORAD ID, USSPACECOM object number, is a sequential nine-digit number assigned by the United States Space Command (USSPACECOM), and previously the North American Aerospace Defense Command (NORAD), in the order of launch or discovery to all artificial objects in the orbits of Earth and those that left Earth's orbit. For example, catalog number 1 is the Sputnik 1 launch vehicle, with the Sputnik 1 satellite having been assigned catalog number 2.
+
+Objects that fail to orbit or orbit for a short time are not catalogued. The minimum object size in the catalog is 10 centimetres (3.9 in) in diameter.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -26,36 +29,110 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name           | Type                      | Description                                  |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field...                        |
-| template:another_one | \[number]                 | Describe the field...                        |
+| Field Name         | Type   | Description                                    |
+| ------------------ | ------ | ---------------------------------------------- |
+| satcat:norad       | string | **REQUIRED**. Object's NORAD unique identifier |
+| satcat:satname     | string | **REQUIRED**. Object's name                    |
+| satcat:object_type | string | **REQUIRED**. Object type                      |
+| satcat:country     | string | Country the object belongs  to                 |
+| satcat:launch_site | string | Site the object was launched from              |
 
 ### Additional Field Information
+#### Object type
 
-#### template:new_field
+The object type describes the nature of the artificial object orbiting the Earth.
+Current possible values include `PAYLOAD`, `ROCKET BODY` and `DEBRIS`.
 
-This is a much more detailed description of the field `template:new_field`...
+#### Country
+Below is a subset of the most common SATCAT country codes and their full description.
 
-### XYZ Object
+| Code | Country                                                                 |
+| ---- | ----------------------------------------------------------------------- |
+| ATF  | French Southern Territories                                             |
+| BEL  | BELGIUM                                                                 |
+| BRAZ | BRAZIL                                                                  |
+| CA   | CANADA                                                                  |
+| CHN  | China                                                                   |
+| CIS  | COMMONWEALTH OF INDEPENDENT STATES                                      |
+| ESA  | EUROPEAN SPACE AGENCY                                                   |
+| ESRO | EUROPEAN SPACE RESEARCH ORGANIZATION                                    |
+| EUME | EUROPEAN ORGANIZATION FOR THE EXPLOITATION OF METEOROLOGICAL SATELLITES |
+| EUTE | EUROPEAN TELECOMMUNICATIONS SATELLITE ORGANIZATION (EUTELSAT)           |
+| FGER | FRANCE/GERMANY                                                          |
+| FR   | FRANCE                                                                  |
+| FRG  | FEDERAL REPUBLIC OF GERMANY                                             |
+| FRIT | FRANCE/ITALY                                                            |
+| FRRG | FRANCE/FEDERAL REPUBLIC OF GERMANY                                      |
+| GER  | GERMANY                                                                 |
+| GUF  | French Guiana                                                           |
+| IM   | INTERNATIONAL MARITIME SATELLITE ORGANIZATION (INMARSAT)                |
+| INMA | INTERNATIONAL MARITIME SATELLITE ORGANIZATION (INMARSAT)                |
+| IOT  | British Indian Ocean Territory                                          |
+| ISRO | INDIA SPACE RESEARCH ORGANIZATION                                       |
+| ISS  | INTERNATIONAL SPACE STATION                                             |
+| IT   | ITALY                                                                   |
+| ITSO | INTERNATIONAL TELECOMMUNICATIONS SATELLITE ORGANIZATION (INTELSAT)      |
+| NATO | NORTH ATLANTIC TREATY ORGANIZATION                                      |
+| NETH | NETHERLANDS                                                             |
+| NKOR | NORTH KOREA                                                             |
+| ORB  | ORBITAL TELECOMMUNICATIONS SATELLITE (GLOBALSTAR)                       |
+| PRC  | PEOPLES REPUBLIC OF CHINA                                               |
+| PRES | PEOPLES REPUBLIC OF CHINA/EUROPEAN SPACE AGENCY                         |
+| RASC | REGIONAL AFRICAN SATELLITE COMMUNICATIONS ORG                           |
+| SES  | SOCIÉTÉ EUROPÉENNE DES SATELLITES                                       |
+| TBD  | TO BE DETERMINED/UNKNOWN                                                |
+| UAE  | UNITED ARAB EMIRATES                                                    |
+| UK   | UNITED KINGDOM                                                          |
+| UNKN | UNKNOWN                                                                 |
+| US   | UNITED STATES OF AMERICA                                                |
+| USBZ | UNITED STATES/BRAZIL                                                    |
+| USSR | UNION OF SOVIET SOCIALIST REPUBLICS                                     |
 
-This is the introduction for the purpose and the content of the XYZ Object...
+#### Launch site
+Below is an exhaustive table of the SATCAT launch codes and their full description.
 
-| Field Name | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| x          | number | **REQUIRED**. Describe the required field... |
-| y          | number | **REQUIRED**. Describe the required field... |
-| z          | number | **REQUIRED**. Describe the required field... |
+| Code  | Launch site                                    |
+| ----- | ---------------------------------------------- |
+| AFETR | AIR FORCE EASTERN TEST RANGE                   |
+| AFWTR | AIR FORCE WESTERN TEST RANGE                   |
+| CAS   | Pegasus launched from Canary Islands Air Space |
+| ERAS  | Pegasus launched from Eastern Range Air Space  |
+| FRGUI | FRENCH GUIANA                                  |
+| HGSTR | HAMMA GUIRA SPACE TRACK RANGE                  |
+| JJSLA | Jeju Sea Launch Area                           |
+| JSC   | Jiuquan Satellite Launch Center, China         |
+| KODAK | Kodiak Island, Alaska                          |
+| KSCUT | KAGOSHIMA SPACE CENTER UNIVERSITY OF TOKYO     |
+| KWAJL | Kwajalein                                      |
+| KYMTR | KAPUSTIN YAR MISSILE AND SPACE COMPLEX         |
+| NSC   | Naro Space Center, South Korea                 |
+| OREN  | Orenburg, Russia                               |
+| PKMTR | PLESETSK MISSILE AND SPACE COMPLEX             |
+| PMRF  | Pacific Missile Range Facility                 |
+| RLLC  | Rocket Lab Launch Complex                      |
+| SADOL | Submarine Launch from Barents Sea, Russia      |
+| SCSLA | South China Sea Launch Area                    |
+| SEAL  | SEA LAUNCH                                     |
+| SEM   | Semnan, Iran                                   |
+| SMTS  | Sharud Missile Test Site                       |
+| SNMLP | SAN MARCO LAUNCH PLATFORM                      |
+| SRI   | SIRHARIKOTA                                    |
+| SVOB  | Svobodny, Russia                               |
+| SWAS  | SPACEPORT CORNWALL AIR SPACE                   |
+| TNSTA | TANEGASHIMA SPACE CENTER                       |
+| TSC   | Taiyaun Space Center, China                    |
+| TTMTR | TYURATAM MISSILE AND SPACE COMPLEX             |
+| UNKN  | Unknown                                        |
+| VOSTO | VOSTOCHNY COSMODROME                           |
+| VOWAS | Virgin Orbit Western Air Space                 |
+| WLPIS | WALLOPS ISLAND                                 |
+| WOMRA | WOOMERA                                        |
+| WRAS  | Pegasus launched from Western Range Air Space  |
+| WSC   | Wenchang Satellite Launch Center               |
+| XSC   | Xichang Space Center, China                    |
+| YAVNE | Yavne, Israel                                  |
+| YSLA  | Yellow Sea Launch                              |
 
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type           | Description                           |
-| -------------- | ------------------------------------- |
-| fancy-rel-type | This link points to a fancy resource. |
 
 ## Contributing
 
