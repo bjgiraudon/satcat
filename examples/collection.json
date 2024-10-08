@@ -2,64 +2,38 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://github.com/bjgiraudon/satcat/raw/refs/tags/v1.0.0/json-schema/schema.json"
   ],
   "type": "Collection",
-  "id": "collection",
-  "title": "A title",
-  "description": "A description",
+  "id": "NORAD_27833",
+  "title": "ARIANE 5 DEB (SYLDA) DEBRIS (NORAD27833, COSPAR2003-028D)",
+  "description": "STAC-formatted description of the spatial object with NORAD 27833 and COSPAR 2003-028D\nwhich is a DEBRIS of the satellite 'ARIANE 5 DEB (SYLDA)' belonging to FR and launched from FRGUI.",
   "license": "Apache-2.0",
   "extent": {
     "spatial": {
       "bbox": [
         [
-          172.9,
-          1.3,
-          173,
-          1.4
+          -180,
+          -90,
+          180,
+          90
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2015-06-23T00:00:00Z",
+          "2003-06-11T00:00:00Z",
           null
         ]
       ]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
-  },
-  "template:another_one": [
-    1,
-    2,
-    3
-  ],
-  "assets": {
-    "example": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
-    }
-  },
-  "item_assets": {
-    "data": {
-      "roles": [
-        "data"
-      ],
-      "template:new_field": "test"
-    }
-  },
-  "summaries": {
-    "datetime": {
-      "minimum": "2015-06-23T00:00:00Z",
-      "maximum": "2019-07-10T13:44:56Z"
-    }
-  },
+  "satcat:norad": "27833",
+  "satcat:country": "FR",
+  "satcat:satname": "ARIANE 5 DEB (SYLDA)",
+  "satcat:launch_site": "FRGUI",
+  "satcat:object_type": "DEBRIS",
   "links": [
     {
       "href": "https://example.com/examples/collection.json",
